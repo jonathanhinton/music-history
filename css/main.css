@@ -1,0 +1,85 @@
+.mainHeader {
+  width: 700px;
+  background-color: lightyellow;
+  border: 3px solid black;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+nav ul li {
+  display: inline-block;
+  font-family: "Poiret One";
+  font-size: 1.25em;
+  margin: 0 5px;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a:hover {
+  font-weight: 600;
+}
+
+.mainForm {
+  font-family: "Poiret One";
+  font-size: 1em;
+  float: left;
+  /*display: inline-block;*/
+/*  max-width: 25%;*/
+  width: 200px;
+  height: 400px;
+  background-color: lavender;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 5px;
+}
+
+.artistSelect {
+  margin: 5px;
+  padding: 5px;
+}
+
+.albumSelect {
+  margin: 5px;
+  padding: 5px;
+}
+
+.genre .leftBox {
+/*  float: left;*/
+  display: inline-block;
+  list-style: none;
+  margin: 5px;
+  padding: 5px;
+}
+
+.genre .rightBox {
+/*  float: left;*/
+  display: inline-block;
+  list-style: none;
+  margin: 5px;
+  padding: 5px;
+}
+
+.favoriteSong {
+  font-family: "Poiret One";
+/*  min-width: 62%;*/
+  width: 425px;
+  height: 400px;
+  float: left;
+  /*display: inline-block;*/
+  background-color: lightgreen;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 5px;
+}
+
+.filter {
+  clear: both;
+}
+
+.songInfo li {
+  display: inline-block;
+}
