@@ -1,0 +1,22 @@
+{
+  "songs": [
+    {
+      "title": "Crags and Clay",
+      "artist": "Gungor",
+      "album": "Ghosts upon the Earth",
+      "genre": "Indie"
+    },
+    {
+      "title": "Barton's Hollow",
+      "artist": "The Civil Wars",
+      "album": "Barton's Hollow",
+      "genre": "Folk"
+    },
+    {
+      "title": "The Poison",
+      "artist": "Pedro the Lion",
+      "album": "Achilles Heel",
+      "genre": "Indie"
+    }
+  ]
+}

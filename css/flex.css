@@ -1,0 +1,37 @@
+/**** Flex CSS ****/
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  height: 5em;
+  display: flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
+}
+
+.flex-container > header,
+.flex-container > footer {
+  flex: 1 100%;
+}
+
+.mainForm {
+  flex-grow: 5;
+  font-family: "Helvetica Neue";
+  display: inline-block;
+}
+
+.songPane {
+  flex-grow 1;
+}
+
+.flex-item {
+  background: tomato;
+  padding: 10px;
+  /* The width property here is important. Explain why */
+  border: 3px solid rgba(0,0,0,.2);
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}

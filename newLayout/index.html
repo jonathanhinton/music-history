@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="main.css">
+  <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+  <meta charset="UTF-8">
+  <title>Music App</title>
+</head>
+<body class="flex-container">
+  <header class="flex-item main__header">
+    <nav role='navigation'>
+      <ul>
+        <li><a href="#">View Music</a> | </li>
+        <li><a href="#">Add Music</a> | </li>
+        <li><a href="#">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+    <div class="flex-item left__sidebar">
+        <form action="form.html" method="POST">
+        <div class="slider">
+          <label for="songLength">Song Length</label>
+          <input type="range" name="songLength" />
+        </div>
+        <div class="artistSelect">
+          <label for="Artist">Artist</label>
+          <br />
+          <select name="artistDrop" id="artistDrop">
+          </select>
+        </div>
+
+        <div class="albumSelect">
+          <label for="Album">Album</label>
+          <br />
+          <select name="albumDrop" id="albumDrop">
+          </select>
+        </div>
+
+
+        <div class="genre">
+          <ul class="leftBox">
+            <li><input type="checkbox" name="checkbox" id="checkbox" />Rock</li>
+            <li><input type="checkbox" name="checkbox" id="checkbox" />Pop</li>
+            <li><input type="checkbox" name="checkbox" id="checkbox" />Blues</li>
+          </ul>
+          <ul class="rightBox">
+            <li><input type="checkbox" name="checkbox" id="checkbox" />Indie</li>
+            <li><input type="checkbox" name="checkbox" id="checkbox" />Jazz</li>
+            <li><input type="checkbox" name="checkbox" id="checkbox" />Hip-hop</li>
+          </ul>
+        </div>
+
+        <div class="filter">
+          <input type="submit" value="filter" />
+        </div>
+      </form>
+    </div>
+
+    <div class="flex-item right__sidebar" id="songList">
+      <button id="get-more-music">Get More Music</button>
+    </div>
+  <footer class="flex-item main__footer">Created by Jonathan Hinton <datetime>2015</datetime></footer>
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="javaScripts/main.js"></script>
+</body>
+</html>

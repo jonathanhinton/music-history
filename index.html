@@ -3,10 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/flex.css">
 	<title>Music App</title>
 </head>
-<header class="mainHeader">
+<body class="flex-container">
+<header class="flex-item main__Header">
     <nav role='navigation'>
       <ul>
         <li><a href="#">View Music</a> | </li>
@@ -15,8 +16,7 @@
       </ul>
     </nav>
   </header>
-<body>
-	<form class="mainForm" action="form.html" method="POST">
+  <form class="flex-item mainForm" action="form.html" method="POST">
       <div class="slider">
         <label for="songLength">Song Length</label>
         <input type="range" name="songLength" />
@@ -63,7 +63,7 @@
         <input type="submit" value="Filter" />
       </div>
     </form>
-  <div class="favoriteSong">
+  <div class="flex-item songPane">
     <div>
       <h2 class="songName">Song 1</h2>
       <ul class="songInfo">
@@ -101,6 +101,7 @@
     </div>
   </div>
   <div id="mainContent"></div>
+<footer>Created by Jonathan Hinton <datetime>2015</datetime></footer>
 <script src="main.js"></script>
 </body>
 </html>
