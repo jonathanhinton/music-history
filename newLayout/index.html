@@ -6,8 +6,8 @@
   <meta charset="UTF-8">
   <title>Music App</title>
 </head>
-<body class="flex-container" ng-app="Music-history">
-  <header class="flex-item main__header">
+<body class="flex-container" ng-app="MusicHistory">
+ <header class="flex-item main__header">
     <nav role='navigation'>
       <ul>
         <li><a href="#">View Music</a> | </li>
@@ -16,6 +16,7 @@
       </ul>
     </nav>
   </header>
+  <section ng-controller="interactCtrl">
     <div class="flex-item left__sidebar">
         <div class="slider">
           <label for="songLength">Song Length</label>
@@ -55,10 +56,20 @@
     </div>
 
     <div class="flex-item right__sidebar" id="songList">
+  <h1>{{title}}</h1>
+    <select ng-model="TheArtist" ng-options="value.artist for value in songList">Artists
+    </select>
+    <select ng-model="TheAlbums" ng-options="value.album for value in songList">Albums</select>
+
       <button id="get-more-music">Get More Music</button>
     </div>
+  </section>
   <footer class="flex-item main__footer">Created by Jonathan Hinton <datetime>2015</datetime></footer>
   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="/lib/bower_components/angular/angular.min.js"></script>
+<!--
   <script src="javaScripts/main.js"></script>
+-->
+  <script src="javaScripts/app.js"></script>
 </body>
 </html>
