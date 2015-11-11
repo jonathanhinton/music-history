@@ -44,6 +44,17 @@ app.controller("interactCtrl", function($scope, $http){
       album: "High Violet",
       genre: "Indie"
     }];
-  $scope.title = "yes we can";
+  // $scope.$apply(function(){
+  //   $http.get('songs.json')
+  //   .success(data, status, headers, config)
+  //   console.log("data", data);
+  //   return $scope.songList = data;
+  // })
+  // .error(function(data, status, headers, config){
+  //   console.log("data", data);
+  //   console.log("status", status);
+  //   console.log("headers", headers);
+  //   console.log("config", config);
+  // });
 
 });

@@ -56,10 +56,12 @@
     </div>
 
     <div class="flex-item right__sidebar" id="songList">
-  <h1>{{title}}</h1>
-    <select ng-model="TheArtist" ng-options="value.artist for value in songList">Artists
-    </select>
-    <select ng-model="TheAlbums" ng-options="value.album for value in songList">Albums</select>
+      <select ng-model="TheArtist" ng-options="value.artist for value in songList">Artists
+      </select>
+      <select ng-model="TheAlbums" ng-options="value.album for value in songList">Albums</select>
+        <ul ng-repeat="song in songList">
+          <li>{{song.title}}</li>
+        </ul>
 
       <button id="get-more-music">Get More Music</button>
     </div>

@@ -5,7 +5,7 @@
 
 /**** FLEXBOX STYLING ****/
 
-.flex-container {
+/*.flex-container {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -59,26 +59,26 @@
   margin: 10px;
   padding: 0;
 }
-
+*/
 /*.right__sidebar div:first-of-type {
   font-weight: 800;
   text-shadow: 2px 2px 3px #aaa;
   box-shadow: 10px 10px 5px;
 }*/
 
-.flex-item {
+/*.flex-item {*/
   /*padding: 5px;*/
   /* The width property here is important. Explain why */
-  width: 100px;
+/*  width: 100px;
   border: 1px solid rgba(0,0,0,.2);
   color: black;
   font-size: 1.5em;
   text-align: center;
-}
+}*/
 
 /**** NAV BAR STYLING ****/
 
-nav ul li {
+/*nav ul li {
   display: inline-block;
   font-family: "Poiret One";
   font-size: 1em;
@@ -100,23 +100,23 @@ nav a:hover {
   display: inline-block;
   margin: 5px;
   padding: 10px;
-}
+}*/
 
 /**** LEFT SIDEBAR STYLING ****/
 
-.mainForm {
+/*.mainForm {
   font-family: "Poiret One";
-  font-size: 1em;
+  font-size: 1em;*/
   /*float: left;*/
   /*width: 200px;*/
   /*height: 400px;*/
   /*border: 3px solid black;*/
   /*border-radius: 10px;*/
-  padding: 15px;
+/*  padding: 15px;
   margin: 5px;
-}
+}*/
 
-.artistSelect {
+/*.artistSelect {
   margin: 15px;
   padding: 15px;
 }
@@ -141,27 +141,27 @@ nav a:hover {
   margin: 5px;
   padding: 5px;
 }
-
+*/
 /**** RIGHT SIDEBAR STYLING ****/
 
-.songInfo li {
+/*.songInfo li {
   display: inline-block;
 }
-
+*/
 
 
 /**** FOOTER STYLING ****/
 
-.main__footer {
+/*.main__footer {
   padding: 5px;
   font-size: 1em;
   flex-grow: 2;
-}
+}*/
 
 /*.first-track {
   font-weight: 800;
 }*/
-
+/*
 .destroy {
   background-color: lightcoral;
   border: 1px solid lightgrey;
@@ -177,7 +177,7 @@ nav a:hover {
 
 
 
-
+*/
 
 
 
