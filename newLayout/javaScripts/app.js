@@ -25,12 +25,45 @@ app.config(['$routeProvider', function($routeProvider) {
 //   }
 //   ])
 
-app.controller('SongsCtrl', function($scope){
-  $.ajax('javaScripts/songs.json')
-  .done(function(ajaxSongs){
-    $scope.songs = ajaxSongs.songs;
-    console.log("$scope.songs", $scope.songs);
-    $scope.$apply();
+app.controller('SongsCtrl', function($scope, $q, $http){
+  // $.ajax('javaScripts/songs.json')
+  // .done(function(ajaxSongs){
+  //   $scope.songs = ajaxSongs.songs;
+  //   console.log("$scope.songs", $scope.songs);
+  //   $scope.$apply();
+  // });
+  return $q(function(resolve, reject){
+    $http
+      .get('./javaScripts/songs.json')
+      .success(function(objectFromJSONFile){
+        console.log("objectFromJSONFile", objectFromJSONFile);
+        resolve(objectFromJSONFile.songs);
+      }, function(error) {
+        reject(error);
+      }
+    )
+  })
+  .then(function(jsonData){
+    console.log("jsonData", jsonData);
+    $scope.songs = jsonData;
   });
+});
+
+
+app.controller('AddSongCtrl', function($scope){
+
+  $scope.newSong = {
+    artist: "",
+    title: "",
+    album: ""
+  };
+
+  $scope.addSong = function(){
+    $scope.songs.$add({
+      artist: $scope.newSong.artist,
+      title: $scope.newSong.title,
+      album: $scope.newSong.album
+    });
+  };
 });
 
