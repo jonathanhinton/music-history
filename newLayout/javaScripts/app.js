@@ -1,60 +1,36 @@
 
-var app = angular.module('MusicHistory', []);
+var app = angular.module('MusicHistory', ['ngRoute']);
 
-app.controller("interactCtrl", function($scope, $http){
-  $scope.songList = [{
-      title: "The Walk",
-      artist: "Mayer Hawthorne",
-      album: "How do You Do",
-      genre: "Blues"
-    },
-    {
-      title: "You Should've Come Over",
-      artist: "Jeff Buckley",
-      album: "Grace",
-      genre: "Pop"
-    },
-    {
-      title: "It's the End of The World as We Know It",
-      artist: "R.E.M.",
-      album: "Document",
-      genre: "Rock"
-    },
-    {
-      title: "A Long December",
-      artist: "Counting Crows",
-      album: "Recovering the Satellites",
-      genre: "Pop"
-    },
-    {
-      title: "Letting the Cables Sleep",
-      artist: "Bush",
-      album: "Science of Things",
-      genre: "Rock"
-    },
-    {
-      title: "The Big Sleep",
-      artist: "Murder By Death",
-      album: "In Bocca al Luppo",
-      genre: "Indie"
-    },
-    {
-      title: "Vanderlyle Crybaby Geeks",
-      artist: "The National",
-      album: "High Violet",
-      genre: "Indie"
-    }];
-  // $scope.$apply(function(){
-  //   $http.get('songs.json')
-  //   .success(data, status, headers, config)
-  //   console.log("data", data);
-  //   return $scope.songList = data;
-  // })
-  // .error(function(data, status, headers, config){
-  //   console.log("data", data);
-  //   console.log("status", status);
-  //   console.log("headers", headers);
-  //   console.log("config", config);
-  // });
+app.config(['$routeProvider', function($routeProvider) {
 
+  $routeProvider
+    .when('/songs/list', {
+      templateUrl: 'partials/song-list.html',
+      controller: 'SongsCtrl'
+    })
+    .when('/songs/new', {
+      templateUrl: 'partials/song-form.html',
+      controller: 'AddSongCtrl'
+    });
+}]);
+
+// app.controller('SongListCtrl', [
+//   "$scope",
+//   "song_service",
+//   function($scope, song_service) {
+//     song_service.getSongs().then(function(data){
+//       $scope.song_list = data;
+//       console.log($scope.song_list);
+//     })
+//   }
+//   ])
+
+app.controller('SongsCtrl', function($scope){
+  $.ajax('javaScripts/songs.json')
+  .done(function(ajaxSongs){
+    $scope.songs = ajaxSongs.songs;
+    console.log("$scope.songs", $scope.songs);
+    $scope.$apply();
+  });
 });
+
