@@ -36,13 +36,14 @@ app.factory('song_service', function($http, $q){
   }
 
   function getSingleSong(id){
-    return song_list.filter(function(song){
+    return songlist.filter(function(song){
       return song.id === id;
     })[0];
   }
 
   function addsong(songObj){
-
+    songlist.push(songObj);
+    return songlist;
   }
   return {
     getSongs : getSongs,
@@ -56,14 +57,33 @@ app.controller('SongsCtrl', [
   "song_service",
   function($scope, song_service) {
     song_service.getSongs().then(function(data){
-      $scope.song_list = data;
-      console.log($scope.song_list);
+      $scope.songs_list = data;
+      console.log($scope.songs_list);
     }).catch(function(){
       $scope.error = "Songs could not be loaded";
     })
   }
   ]);
 
+app.controller("AddSongCtrl",
+  [
+    "$scope",
+    "song_service",
+    function($scope, song_service ) {
+
+      $scope.newSong = { title: "", album: "", artist: "" };
+
+      $scope.addSong = function() {
+        $scope.songs_list = song_service.addSong({
+          title: $scope.newSong.title,
+          album: $scope.newSong.album,
+          artist: $scope.newSong.artist
+        });
+        console.log("Addsong", $scope.songs_list);
+      };
+    }
+  ]
+);
 // app.controller('SongsCtrl', function($scope, $q, $http){
 //   // $.ajax('javaScripts/songs.json')
 //   // .done(function(ajaxSongs){
@@ -84,21 +104,4 @@ app.controller('SongsCtrl', [
 // }); //end SongsCtrl controller
 
 
-app.controller('AddSongCtrl', function($scope){
-
-  $scope.newSong = {
-    artist: "",
-    title: "",
-    album: ""
-  };
-
-  $scope.addSong = function(){
-    console.log("click");
-    $scope.songs.$add({
-      artist: $scope.newSong.artist,
-      title: $scope.newSong.title,
-      album: $scope.newSong.album
-    });
-  }
-});
 
