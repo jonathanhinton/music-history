@@ -31,7 +31,7 @@ app.controller('SongListCtrl', [
   ]
 );
 
-app.controller("AddSongCtrl",
+app.controller('AddSongCtrl',
   [
     "$scope",
     "$firebaseArray",
@@ -49,6 +49,31 @@ app.controller("AddSongCtrl",
           });
         console.log("Addsong", $scope.songs);
       };
+    }
+  ]
+);
+
+app.controller('SongDetailCtrl',
+  [
+    "$scope",
+    "$routeParams",
+    "$firebaseArray",
+    function($scope, $routeParams, $songsArray){
+      $scope.selectedSong = {};
+      $scope.songId = $routeParams.songId;
+
+      var ref = new Firebase("https://listenup.firebaseio.com/songs");
+
+      $scope.songs = $songsArray(ref);
+
+      $scope.songs.$loaded()
+      .then(function(){
+        $scope.selectedSong = $scope.songs.$getRecord($scope.songId);
+        console.log("$scope.selectedSong", $scope.selectedSong);
+      })
+      .catch(function(error){
+        console.log("error");
+      });
     }
   ]
 );
