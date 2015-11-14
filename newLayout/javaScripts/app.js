@@ -6,7 +6,7 @@ app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/songs/list', {
       templateUrl: 'partials/song-list.html',
-      controller: 'SongsCtrl'
+      controller: 'SongListCtrl'
     })
     .when('/songs/new', {
       templateUrl: 'partials/song-form.html',
@@ -14,59 +14,54 @@ app.config(['$routeProvider', function($routeProvider) {
     });
 }]);
 
-app.factory('song_service', function($http, $q){
-  var songlist =[];
-  function init(){
-    return $q(function(resolve, reject){
-      $http
-        .get('./javaScripts/songs.json')
-        .success(function(objectFromJSONFile){
-          console.log("objectFromJSONFile", objectFromJSONFile);
-          songlist = objectFromJSONFile.songs;
-          console.log("songlist", songlist);
-          resolve(objectFromJSONFile.songs);
-        }, function(error) {
-          reject(error);
-        } //end error
-      ) //end success
-    }); //end q function
-  };
+// app.factory('song_service', function($http, $q){
+//   var songlist =[];
+//   function init(){
+//     return $q(function(resolve, reject){
+//       $http
+//         .get('./javaScripts/songs.json')
+//         .success(function(objectFromJSONFile){
+//           console.log("objectFromJSONFile", objectFromJSONFile);
+//           songlist = objectFromJSONFile.songs;
+//           console.log("songlist", songlist);
+//           resolve(objectFromJSONFile.songs);
+//         }, function(error) {
+//           reject(error);
+//         } //end error
+//       ); //end success
+//     }); //end q function
+//   }
 
-  init();
+//   init();
 
-  function getSongs(){
-    return songlist;
-  }
+//   function getSongs(){
+//     return songlist;
+//   }
 
-  function getSingleSong(id){
-    return songlist.filter(function(song){
-      return song.id === id;
-    })[0];
-  }
+//   function getSingleSong(id){
+//     return songlist.filter(function(song){
+//       return song.id === id;
+//     })[0];
+//   }
 
-  function addsong(songObj){
-    songlist.push(songObj);
-    return songlist;
-  }
-  return {
-    getSongs : getSongs,
-    getSingleSong : getSingleSong,
-    addsong : addsong
-  };
-});
+//   function addsong(songObj){
+//     songlist.push(songObj);
+//     return songlist;
+//   }
+//   return {
+//     getSongs : getSongs,
+//     getSingleSong : getSingleSong,
+//     addsong : addsong
+//   };
+// });
 
-app.controller('SongsCtrl', [
+app.controller('SongListCtrl', [
   "$scope",
-  "song_service",
   "$firebaseArray",
-    function($scope, song_service) {
-      song_service.getSongs(function(data){
-        $scope.songs_list = data;
-        console.log($scope.songs_list);
-      });
-      // .catch(function(){
-      //   $scope.error = "Songs could not be loaded";
-      // })
+    function($scope, $songsArray){
+      var ref = new Firebase("https://listenup.firebaseio.com/songs");
+      $scope.song_list = $songsArray(ref);
+      console.log("$scope.song_list", $scope.song_list);
     }
   ]
 );

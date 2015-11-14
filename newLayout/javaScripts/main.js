@@ -30,7 +30,7 @@ $(document).ready(function(){
 
     // Add to the DOM
     $("#albumDrop").append(albumDropDown);
-    };
+    }
   }
 
 //ADD MORE SONGS ON CLICK

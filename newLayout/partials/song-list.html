@@ -3,5 +3,5 @@
 </div>
 
 <div ng-repeat="song in song_list | filter:query">
-  <a href="#/songs/{{ song.id }}" ng-click="songInfo(song)">{{ song.title }}</a>
+  <a href="#/songs/{{ song.id }}" ng-click="songInfo(song)">{{ song.name }}</a>
 </div>
