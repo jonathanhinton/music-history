@@ -1,2 +1,4 @@
 .DS_Store
 cow/
+bower_components
+node_modules
