@@ -1,7 +1,12 @@
-<div>
-  <input type="text" ng-model="query" />
-</div>
+<section>
 
-<div ng-repeat="song in song_list | filter:query">
-  <a href="#/songs/{{ song.id }}" ng-click="songInfo(song)">{{ song.name }}</a>
-</div>
+  <div>
+    <input type="text" ng-model="query" />
+  </div>
+
+  <div ng-repeat="song in song_list | filter:query">
+    <a href="#/songs/{{ song.id }}" ng-click="songInfo(song)">{{ song.title }}</a>
+  </div>
+  <button><a href="/#/songs/new">Add A Song</a></button>
+
+</section>

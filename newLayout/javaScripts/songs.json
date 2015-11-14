@@ -5,49 +5,56 @@
       "title": "The Walk",
       "artist": "Mayer Hawthorne",
       "album": "How do You Do",
-      "genre": "Blues"
+      "genre": "Blues",
+      "year" : 2008
     },
     {
       "id" : 2,
       "title": "You Should've Come Over",
       "artist": "Jeff Buckley",
       "album": "Grace",
-      "genre": "Pop"
+      "genre": "Pop",
+      "year" : 2008
     },
     {
       "id" : 3,
       "title": "It's the End of The World as We Know It",
       "artist": "R.E.M.",
       "album": "Document",
-      "genre": "Rock"
+      "genre": "Rock",
+      "year" : 2008
     },
     {
       "id" : 4,
       "title": "A Long December",
       "artist": "Counting Crows",
       "album": "Recovering the Satellites",
-      "genre": "Pop"
+      "genre": "Pop",
+      "year" : 2008
     },
     {
       "id" : 5,
       "title": "Letting the Cables Sleep",
       "artist": "Bush",
       "album": "Science of Things",
-      "genre": "Rock"
+      "genre": "Rock",
+      "year" : 2008
     },
     {
       "id" : 6,
       "title": "The Big Sleep",
       "artist": "Murder By Death",
       "album": "In Bocca al Luppo",
-      "genre": "Indie"
+      "genre": "Indie",
+      "year" : 2008
     },
     {
       "id" : 7,
       "title": "Vanderlyle Crybaby Geeks",
       "artist": "The National",
       "album": "High Violet",
-      "genre": "Indie"
+      "genre": "Indie",
+      "year" : 2008
     }
   ]
 }
