@@ -1,5 +1,5 @@
 
-var app = angular.module('MusicHistory', ['ngRoute']);
+var app = angular.module('MusicHistory', ['firebase', 'ngRoute']);
 
 app.config(['$routeProvider', function($routeProvider) {
 
@@ -15,14 +15,15 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.factory('song_service', function($http, $q){
-  var songlist;
-  var getSongData = function(){
+  var songlist =[];
+  function init(){
     return $q(function(resolve, reject){
       $http
         .get('./javaScripts/songs.json')
         .success(function(objectFromJSONFile){
           console.log("objectFromJSONFile", objectFromJSONFile);
           songlist = objectFromJSONFile.songs;
+          console.log("songlist", songlist);
           resolve(objectFromJSONFile.songs);
         }, function(error) {
           reject(error);
@@ -31,8 +32,10 @@ app.factory('song_service', function($http, $q){
     }); //end q function
   };
 
+  init();
+
   function getSongs(){
-    return getSongData();
+    return songlist;
   }
 
   function getSingleSong(id){
@@ -55,30 +58,34 @@ app.factory('song_service', function($http, $q){
 app.controller('SongsCtrl', [
   "$scope",
   "song_service",
-  function($scope, song_service) {
-    song_service.getSongs().then(function(data){
-      $scope.songs_list = data;
-      console.log($scope.songs_list);
-    }).catch(function(){
-      $scope.error = "Songs could not be loaded";
-    })
-  }
-  ]);
+  "$firebaseArray",
+    function($scope, song_service) {
+      song_service.getSongs(function(data){
+        $scope.songs_list = data;
+        console.log($scope.songs_list);
+      });
+      // .catch(function(){
+      //   $scope.error = "Songs could not be loaded";
+      // })
+    }
+  ]
+);
 
 app.controller("AddSongCtrl",
   [
     "$scope",
     "song_service",
-    function($scope, song_service ) {
+    "$firebaseArray",
+      function($scope, song_service ) {
 
-      $scope.newSong = { title: "", album: "", artist: "" };
+        $scope.newSong = { title: "", album: "", artist: "" };
 
-      $scope.addSong = function() {
-        $scope.songs_list = song_service.addSong({
-          title: $scope.newSong.title,
-          album: $scope.newSong.album,
-          artist: $scope.newSong.artist
-        });
+        $scope.addSong = function() {
+          $scope.songs_list = song_service.addSong({
+            title: $scope.newSong.title,
+            album: $scope.newSong.album,
+            artist: $scope.newSong.artist
+          });
         console.log("Addsong", $scope.songs_list);
       };
     }

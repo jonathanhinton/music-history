@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="main.css">
   <meta charset="UTF-8">
   <title>Music App</title>
 </head>
 <body ng-app="MusicHistory">
-  <section ng-controller="SongsCtrl">
-    <section ng-controller="AddSongCtrl">
+
       <div ng-view></div>
 
-    </section>
-  </section>
 
-  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="/lib/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="/lib/bower_components/angular/angular.min.js"></script>
+  <script src="/lib/bower_components/firebase/firebase.js"></script>
+  <script src="/lib/bower_components/angularfire/dist/angularfire.min.js"></script>
   <script src="lib/bower_components/angular-route/angular-route.js"></script>
-<!--
-  <script src="javaScripts/main.js"></script>
--->
   <script src="javaScripts/app.js"></script>
 </body>
 </html>
