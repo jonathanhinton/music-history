@@ -5,6 +5,7 @@
   </div>
 
   <div ng-repeat="song in song_list | filter:query">
+    <a ng-click="rmSong(song)"><span class="glyphicon glyphicon-remove"></span></a>
     <a href="#/songs/{{ song.$id }}" ng-click="songInfo(song)">{{ song.title }}</a>
   </div>
   <button><a href="/#/songs/new">Add A Song</a></button>

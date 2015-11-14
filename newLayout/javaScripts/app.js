@@ -22,11 +22,21 @@ app.config(['$routeProvider',
 
 app.controller('SongListCtrl', [
   "$scope",
+  "$routeParams",
   "$firebaseArray",
-    function($scope, $songsArray){
+    function($scope, $routeParams, $songsArray){
+      $scope.songToDelete = {};
+      $scope.songId = $routeParams.songId;
+
       var ref = new Firebase("https://listenup.firebaseio.com/songs");
+
       $scope.song_list = $songsArray(ref);
       console.log("$scope.song_list", $scope.song_list);
+
+      $scope.rmSong = function(song){
+        console.log("id", song.$id);
+        $scope.song_list.$remove(song);
+      };
     }
   ]
 );
@@ -47,6 +57,7 @@ app.controller('AddSongCtrl',
             artist: $scope.newSong.artist,
             year : $scope.newSong.year
           });
+
         console.log("Addsong", $scope.songs);
       };
     }
