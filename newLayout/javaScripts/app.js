@@ -1,14 +1,14 @@
 
-var app = angular.module('MusicHistory', ['firebase', 'ngRoute', 'ngAnimate']);
+var app = angular.module('MusicHistory', [ 'music.user', 'ngRoute', 'ngAnimate']);
 
 app.config(['$routeProvider',
   function($routeProvider) {
 
     $routeProvider
-    .when('/user-login', {
-      templateUrl: 'partials/user-login.html',
-      controller: 'UserCtrl as UserCtrl'
-    })
+    // .when('/user-login', {
+    //   templateUrl: 'partials/user-login.html',
+    //   controller: 'UserCtrl as UserCtrl'
+    // })
       .when('/songs/list', {
         templateUrl: 'partials/song-list.html',
         controller: 'SongListCtrl as SongListCtrl'
@@ -21,7 +21,7 @@ app.config(['$routeProvider',
         templateUrl: 'partials/song-detail.html',
         controller: 'SongDetailCtrl as SongDetailCtrl'
       })
-      .otherwise({redirectTo : '/user-login'});
+      .otherwise({redirectTo : '/songs/list'});
 }]);
 
 app.controller('SongListCtrl', [

@@ -1,3 +1,28 @@
-<section>
-  <h1>Hellow</h1>
+<section class="user-login">
+  <div ng-show="authData">
+    <h2>Hello, {{authData.password.email}}</h2>
+    <a class="waves-effect waves-light btn">Go to My songs</a>
+    <button class="waves-effect waves-light btn" ng-click="auth.$unauth()">Logout</button>
+    <button class="waves-effect waves-light btn" ng-click="auth.$removeUser()">Remove User</button>
+  </div>
+
+  <div ng-hide="authData">
+    <h2>Welcome, Please Login</h2>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6 user-login_email">
+            <input id="email" type="email" class="validate" ng-model="email">
+            <label for="email" data-error="wrong" data-success="right">Email</label>
+          </div>
+          <div class="input-field col s6 user-login_password">
+            <input id="password" type="password" class="validate" ng-model="password">
+            <label for="password">Password</label>
+          </div>
+          <a class="user-login_btn waves-effect waves-light btn" ng-click="loginUser()" role="button">Login</a>
+        </div>
+      </form>
+    </div>
+
+  </div>
 </section>
