@@ -1,6 +1,8 @@
-<section>
-  <h1>{{selectedSong.title}}</h1>
-  <h3>by {{selectedSong.artist}}</h3>
-  <h4>from the {{selectedSong.year}} album {{selectedSong.album}}</h4>
-  <button><a href="/#/songs/list">Back to list</a></button>
+<section class="container">
+  <div class="row">
+    <h1>{{SongDetailCtrl.selectedSong.title}}</h1>
+    <h3>by {{SongDetailCtrl.selectedSong.artist}}</h3>
+    <h4>from the {{SongDetailCtrl.selectedSong.year}} album {{SongDetailCtrl.selectedSong.album}}</h4>
+    <button class="waves-effect waves-light btn"><a href="/#/songs/list">Back to list</a></button>
+  </div>
 </section>

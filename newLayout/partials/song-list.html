@@ -1,13 +1,16 @@
-<section>
-
-  <div>
-    <input type="text" ng-model="query" />
+<section class="container">
+  <div class="row">
+    <input class="form-control" type="text" ng-model="query" placeholder="Search Songs"/>
   </div>
+  <div class="row">
 
-  <div ng-repeat="song in song_list | filter:query">
-    <a ng-click="rmSong(song)"><span class="glyphicon glyphicon-remove"></span></a>
-    <a href="#/songs/{{ song.$id }}" ng-click="songInfo(song)">{{ song.title }}</a>
+    <div class="songList" ng-repeat="song in SongListCtrl.song_list | filter:query">
+      <a ng-click="SongListCtrl.rmSong(song)"><i class="tiny material-icons">not_interested</i></a>
+      <a href="#/songs/{{ song.$id }}" ng-click="SongListCtrl.songInfo(song)">{{ song.title }}</a>
+    </div>
   </div>
-  <button><a href="/#/songs/new">Add A Song</a></button>
+  <div class="row">
+    <button class="waves-effect waves-light btn"><a href="/#/songs/new">Add A Song</a></button>
+  </div>
 
 </section>

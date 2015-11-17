@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          '../css/main.css': '../sass/main.sass'
+          '../css/main.css': '../sass/main.scss'
         }
       }
     },
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
         tasks: ['jshint']
       },
       sassy: {
-        files: ['../sass/**/*.sass'],
+        files: ['../sass/**/*.scss'],
         tasks: ['sass']
       }
     }
