@@ -1,41 +1,44 @@
-angular.module('music.user')
+angular.module('Music.User')
   .controller('UserCtrl', [
-    'Auth',
-    function(Auth){
-      this.createUser = function(){
-        this.message = null;
-        this.error = null;
+     '$scope', 'Auth',
+    function($scope, Auth){
+      $scope.createUser = function(){
+        $scope.message = null;
+        $scope.error = null;
 
         Auth.$createUser({
-          email : this.email,
-          password : this.password
-        }.bind(this)).then(function(userData){
-          this.message = "User Created with UID" + userData.uid;
-        }.bind(this)).catch(function(error){
-          this.error = error;
-        }.bind(this));
+          email : $scope.email,
+          password : $scope.password
+        }).then(function(userData){
+          $scope.message = "User Created with UID" + userData.uid;
+        }).catch(function(error){
+          $scope.error = error;
+        });
       };
 
-      this.removeUser = function(){
+      $scope.removeUser = function(){
+        $scope.message = null;
+        $scope.error = null;
+
         Auth.$removeUser({
-          email : this.email,
-          password : this.password
-        }.bind(this)).then(function(){
-          this.message = "User Removed";
-        }.bind(this)).catch(function(error){
-          this.error = error;
-        }.bind(this));
+          email : $scope.email,
+          password : $scope.password
+        }).then(function(){
+          $scope.message = "User Removed";
+        }).catch(function(error){
+          $scope.error = error;
+        });
       };
 
-      this.loginUser = function(){
+      $scope.loginUser = function(){
         Auth.$authWithPassword({
-          email : this.email,
-          password : this.password
-        }.bind(this)).then(function(authData){
-          this.authData = authData;
-        }.bind(this)).catch(function(error){
-          this.error = error;
-        }.bind(this));
+          email : $scope.email,
+          password : $scope.password
+        }).then(function(authData){
+          $scope.authData = authData;
+        }).catch(function(error){
+          $scope.error = error;
+        });
       };
     }
   ])

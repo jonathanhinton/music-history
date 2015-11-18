@@ -1,14 +1,14 @@
 
-var app = angular.module('MusicHistory', [ 'music.user', 'ngRoute', 'ngAnimate']);
+var app = angular.module('MusicHistory', [ 'firebase', 'ngRoute', 'ngAnimate', 'Music.User']);
 
 app.config(['$routeProvider',
   function($routeProvider) {
 
     $routeProvider
-    // .when('/user-login', {
-    //   templateUrl: 'partials/user-login.html',
-    //   controller: 'UserCtrl as UserCtrl'
-    // })
+    .when('/user-login', {
+      templateUrl: 'partials/user-login.html',
+      controller: 'UserCtrl as UserCtrl'
+    })
       .when('/songs/list', {
         templateUrl: 'partials/song-list.html',
         controller: 'SongListCtrl as SongListCtrl'
@@ -21,26 +21,29 @@ app.config(['$routeProvider',
         templateUrl: 'partials/song-detail.html',
         controller: 'SongDetailCtrl as SongDetailCtrl'
       })
-      .otherwise({redirectTo : '/songs/list'});
+      .otherwise({redirectTo : '/user-login'});
 }]);
 
 app.controller('SongListCtrl', [
   "$routeParams",
   "$firebaseArray",
-    function($routeParams, $songsArray){
+  "Auth",
+    function($routeParams, $songsArray, Auth){
+      var ref = new Firebase("https://listenup.firebaseio.com/songs");
       this.songToDelete = {};
       this.songId = $routeParams.songId;
-
-      var ref = new Firebase("https://listenup.firebaseio.com/songs");
-
+      this.auth = Auth;
       this.song_list = $songsArray(ref);
+      this.auth.$onAuth(function(authData){
+        this.userData = authData.uid;
+      }.bind(this));
       console.log("$scope.song_list", this.song_list);
 
       this.rmSong = function(song){
         console.log("id", song.$id);
         angular.element()
         this.song_list.$remove(song);
-      };
+      }.bind(this);
     }
   ]
 );
@@ -48,11 +51,16 @@ app.controller('SongListCtrl', [
 app.controller('AddSongCtrl',
   [
     "$firebaseArray",
-      function($songsArray) {
+    "Auth",
+      function($songsArray, Auth) {
 
         var ref = new Firebase("https://listenup.firebaseio.com/songs");
         this.songs = $songsArray(ref);
         this.newSong = {};
+        this.auth = Auth;
+        this.auth.$onAuth(function(authData){
+          this.userData = authData.uid;
+        }.bind(this));
 
         this.addSong = function() {
           this.songs.$add ({
@@ -87,8 +95,8 @@ app.controller('SongDetailCtrl',
       }.bind(this))
       .catch(function(error){
         console.log("error");
-      });
-    }
+      }.bind(this));
+    }.bind(this)
   ]
 );
 
